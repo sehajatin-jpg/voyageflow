@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VoyageFlow — Interactive Travel Experience Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="cyber">
+
+  <!-- floating orbs + grain -->
+  <div class="bg-ors">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="left">
+      <img src="https://cdn.dribbble.com/userupload/42306385/file/original-d1b30f893e7bb5c23a2bda1908956e68.gif" alt="VF" class="vf-logo" />
+      <div class="brand">VoyageFlow</div>
+    </div>
+    <div class="right">
+      <button id="startOverTop" class="link-btn">Restart</button>
+    </div>
+  </header>
+
+  <main class="pages" id="pages">
+    <!-- PAGE 1: Registration -->
+    <section id="page-1" class="page active" tabindex="-1" aria-live="polite">
+      <div class="card small">
+        <h2>Register to begin your voyage</h2>
+        <form id="regForm" novalidate>
+          <label class="label">Full Name
+            <input id="fullname" type="text" placeholder="Your name" required />
+            <div class="errorsmall" id="err-name">Please enter your name.</div>
+          </label>
+
+          <div class="row">
+            <label class="label">Phone
+              <input id="phone" type="tel" inputmode="numeric" placeholder="10 digits" />
+              <div class="errorsmall" id="err-phone">Phone must be 10 digits.</div>
+            </label>
+            <label class="label">PIN
+              <input id="pin" type="text" inputmode="numeric" placeholder="6 digits" />
+              <div class="errorsmall" id="err-pin">PIN must be 6 digits.</div>
+            </label>
+          </div>
+
+          <label class="label">Email
+            <input id="email" type="email" placeholder="you@domain.com" />
+            <div class="errorsmall" id="err-email">Enter a valid email.</div>
+          </label>
+
+          <div class="actions">
+            <button class="btn" type="submit">Submit</button>
+            <button class="btn ghost" type="button" id="clearBtn">Clear</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- PAGE 2: Travel Blog -->
+    <section id="page-2" class="page" tabindex="-1" aria-hidden="true">
+      <nav class="sticky">
+        <a class="navlink" href="#paris" data-\img="paris.svg" data-title="Paris — City of Lights">Paris</a>
+        <a class="navlink" href="#tokyo" data-img="tokyo.svg" data-title="Tokyo — Neon & Tradition">Tokyo</a>
+        <a class="navlink" href="#rome" data-img="rome.svg" data-title="Rome — Living History">Rome</a>
+        <a class="navlink" href="#nyc" data-img="nyc.svg" data-title="New York — The City That Never Sleeps">New York</a>
+        <a class="navlink" href="#bali" data-img="bali.svg" data-title="Bali — Island Serenity">Bali</a>
+      </nav>
+
+      <div class="blog-grid">
+        <article id="paris" class="blog-section" data-img="paris.svg">
+          <h3>Paris — City of Lights</h3>
+          <p>Paris shines with timeless charm, artistic brilliance, and romantic streets that glow under evening lights. Known as “The City of Light,” its nickname comes from both the Enlightenment era and its early adoption of street lighting. From the iconic Eiffel Tower to the artistic soul of Montmartre, Paris invites you to savor beauty at every turn. Wander through the Louvre, cruise along the Seine, enjoy classic pastries, and let the city’s soft glow sweep you into its dreamlike magic.</p>
+        </article>
+
+        <article id="tokyo" class="blog-section" data-img="tokyo.svg">
+          <h3>Tokyo — Neon & Tradition</h3>
+          <p>Tokyo is a city where ancient temples stand proudly beside neon-lit skyscrapers. It is a place of contrasts—peaceful gardens, high-tech districts, rich traditions, and futuristic innovations. Explore the bustling energy of Shibuya Crossing, taste world-class sushi at Tsukiji, find serenity at the Meiji Shrine, and shop in Ginza. Whether you're wandering through cherry blossoms or admiring cutting-edge technology, Tokyo offers an unforgettable blend of past and future.</p>
+        </article>
+
+        <article id="rome" class="blog-section" data-img="rome.svg">
+          <h3>Rome — Living History</h3>
+          <p>Rome is an open-air museum, where every corner whispers stories of emperors, gladiators, artists, and saints. Walk through history as you explore the mighty Colosseum, the grandeur of Vatican City, and the ancient wonder of the Roman Forum. Toss a coin into the Trevi Fountain, stroll through charming piazzas, and savor authentic Italian dishes like pasta carbonara and gelato. In Rome, the past feels alive, and every moment is steeped in timeless beauty.</p>
+        </article>
+
+        <article id="nyc" class="blog-section" data-img="nyc.svg">
+          <h3>New York — The City That Never Sleeps</h3>
+          <p>New York is energy, ambition, diversity, and entertainment wrapped into one iconic skyline. From the dazzling lights of Times Square to the peaceful greenery of Central Park, the city offers something for every traveler. Visit the Statue of Liberty, explore world-class museums, walk the Brooklyn Bridge, and taste global cuisine from food trucks to Michelin-star restaurants. In New York, every street has a story, and every moment feels larger than life.</p>
+        </article>
+
+        <article id="bali" class="blog-section" data-img="bali.svg">
+          <h3>Bali — Island Serenity</h3>
+          <p>Bali is a tropical paradise filled with lush greenery, sacred temples, golden beaches, and warm island culture. Relax on the serene shores of Seminyak, explore the artistic village of Ubud, trek the volcanic Mount Batur, or dive into crystal-clear waters in Nusa Penida. With its wellness retreats, rice terraces, and vibrant traditions, Bali offers peace, adventure, and spiritual rejuvenation. It’s a place where nature and culture come together in perfect harmony.</p>
+        </article>
+      </div>
+
+      <div class="center">
+        <button id="toPage3" class="btn">Plan Your Trip</button>
+      </div>
+    </section>
+
+    <!-- PAGE 3: Trip Itinerary & Price Calculator -->
+    <section id="page-3" class="page" tabindex="-1" aria-hidden="true">
+      <div class="card">
+        <h2>Build your itinerary</h2>
+        <p class="hint">Pick destination, options and activities — total updates instantly.</p>
+
+        <div class="grid">
+          <div class="card-row">
+            <h4>Choose destination</h4>
+            <div class="options" id="destinationOptions">
+              <label class="opt"><input type="radio" name="destination" value="Paris"> Paris</label>
+              <label class="opt"><input type="radio" name="destination" value="Tokyo"> Tokyo</label>
+              <label class="opt"><input type="radio" name="destination" value="Rome"> Rome</label>
+              <label class="opt"><input type="radio" name="destination" value="New York"> New York</label>
+              <label class="opt"><input type="radio" name="destination" value="Bali"> Bali</label>
+              <div class="errorsmall" id="err-destination">Please select a destination.</div>
+            </div>
+          </div>
+
+          <div class="card-row">
+            <h4>Travel options</h4>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="800"> Economy Flight — $800</label>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="1500"> Business Flight — $1500</label>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="120"> Train / Bus — $120</label>
+          </div>
+
+          <div class="card-row">
+            <h4>Food packages</h4>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="40"> Local Food Tour — $40</label>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="120"> Gourmet Dining — $120</label>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="15"> Breakfast — $15</label>
+          </div>
+
+          <div class="card-row">
+            <h4>Activities</h4>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="60"> Guided Tour — $60</label>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="150"> Museum — $150</label>
+            <label class="opt"><input type="checkbox" class="price-checkbox" data-price="90"> Adventure — $90</label>
+          </div>
+        </div>
+
+        <div class="total-bar">
+          <div>Total Price</div>
+          <div id="totalPrice">$0</div>
+        </div>
+
+        <div class="actions">
+          <button id="confirmBtn" class="btn">Confirm Selection</button>
+          <button id="backToBlog" class="btn ghost">Back to Blog</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4: Confirmation -->
+    <section id="page-4" class="page" tabindex="-1" aria-hidden="true">
+      <div class="card small thank-you">
+        <div class="emoji">🎉</div>
+        <h2>Booking simulated</h2>
+        <p class="hint" id="summaryText">Your booking summary will appear here.</p>
+        <div class="actions">
+          <button id="startOver" class="btn">Start Over</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-hidden="true">
+    <div class="modal">
+      <h3 id="modalTitle">Success</h3>
+      <p id="modalBody">Operation completed.</p>
+      <div class="modal-actions">
+        <button id="modalOk" class="btn">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer minimal-footer">
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
